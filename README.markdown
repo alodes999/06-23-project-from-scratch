@@ -25,6 +25,7 @@ and we've got a many-to-many relationship:  Game -> Review <- User.
 - Should not be able to add a game review without a rating value, or a corresponding user
 - Should not be able to add a game that is already listed, nor a game without a genre
 - Should not be able to add a user or genre that are empty
+- Should not be able to delete a game with a review connected
 
 ###Additional Requirements
 - Unit tests for all business logic
