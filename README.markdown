@@ -22,7 +22,7 @@ and we've got a many-to-many relationship:  Game -> Review <- User.
 
 
 ### "Should Not" Cases
-- Should not be able to add a game review without a rating value, or a corresponding user
+- Should not be able to add a game review without a rating value, corresponding user, or game to review
 - Should not be able to add a game that is already listed, nor a game without a genre
 - Should not be able to add a user or genre that are empty
 - Should not be able to delete a game with a review connected
