@@ -33,7 +33,8 @@ end
 # 
 # If it is a new genre, it adds it and sends the user to the Success page listed
 # 
-# If it is a genre already there, it sends the user to the Error page listed
+# If it is a genre already there, or a blank field is submitted, 
+# it sends the user to the Error page listed.
 get '/genre_add_to_database' do
   add_hash = {"name" => params["genre_name"]}
   test = Genre.all
