@@ -3,7 +3,9 @@
 Please ensure the genre you wish to delete is not tied with a game!
 
 <p>Please pick a genre to delete</p>
-
+<!--This form lists each genre currently in the database, and allows selection of one to delete.
+  It returns the id of the selected genre, named "genre_to_delete". 
+  Sends a call to the "/genre_delete_from_database" receiver -->
 <form action="/genre_delete_from_database">
   <select name="genre_to_delete">
     <% Genre.all.each do |genre| %>
