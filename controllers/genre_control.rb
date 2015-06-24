@@ -49,6 +49,8 @@ get '/genre_add_to_database' do
   elsif !test_names.include?(params["genre_name"])
     Genre.add(add_hash)
     erb :"success/data_added"
+  elsif params["genre_name"] == "" 
+    erb :"error/no_data_in_field"
   else
     erb :"error/data_exists"
   end
