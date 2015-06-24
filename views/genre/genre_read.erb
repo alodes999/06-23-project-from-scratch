@@ -1,1 +1,9 @@
-Placeholder
+<h1>Genre List</h1>
+
+<ul>
+  <% Genre.all.each do |genre| %>
+    <li><%= "#{genre.id} - #{genre.name}" %></li>
+  <% end %>
+</ul>
+
+<p><a href="/home">Go to home page</a></p>

@@ -1,1 +1,19 @@
-Placeholder
+<h1>Change Genre</h1>
+
+<p>Please ensure the genre is not tied to any games before you change it!</p>
+
+<form action="/genre_change_in_database">
+  
+  <select name="genre_to_change">
+    <% Genre.all.each do |genre| %>
+      <option value="<%= genre.id %>"><%= genre.name %></option>
+    <% end %>
+  </select>
+  
+  <input type="text" placeholder="New Genre Name" name="new_genre_name">
+  
+  <button type="submit">Change this Genre</button>
+  
+</form>
+
+<p><a href="/home">Go to home page</a></p>

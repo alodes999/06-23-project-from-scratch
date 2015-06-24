@@ -13,7 +13,7 @@ class Genre
     @name = options["name"]
   end
 
-  def games_in_genre(id)
+  def self.games_in_genre(id)
     gameslist = CONNECTION.execute("SELECT * FROM games WHERE genre_id = #{id};")
     genre_array = []
     gameslist.each do |game|

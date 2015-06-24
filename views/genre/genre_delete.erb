@@ -1,1 +1,17 @@
-Placeholder
+<h1>Delete Genre</h1>
+
+Please ensure the genre you wish to delete is not tied with a game!
+
+<p>Please pick a genre to delete</p>
+
+<form action="/genre_delete_from_database">
+  <select name="genre_to_delete">
+    <% Genre.all.each do |genre| %>
+      <option value="<%= genre.id %>"><%= genre.name %></option>
+    <% end %>
+  </select>
+  
+  <button type="input">I'm sure, delete genre</button>
+</form>
+
+<p><a href="/home">Go to home page</a></p>
