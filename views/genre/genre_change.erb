@@ -3,7 +3,10 @@
 <p>Please ensure the genre is not tied to any games before you change it!</p>
 
 <form action="/genre_change_in_database">
-  
+<!--This form lists each genre currently in the database, as well as allows for input
+  for the new genre name.  It returns both the id, named "genre_to_change", and the new
+  genre name, called "new_genre_name".  Sends a call to the "/genre_change_in_database"
+  receiver -->
   <select name="genre_to_change">
     <% Genre.all.each do |genre| %>
       <option value="<%= genre.id %>"><%= genre.name %></option>
