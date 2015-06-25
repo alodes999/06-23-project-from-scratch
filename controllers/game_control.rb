@@ -57,9 +57,8 @@ end
 
 get "/game_change_in_database" do
   change_hash = params["game"]
-  if change_hash.name.empty?
-    @error = true
-    erb :"game/game_change_action"
+  if change_hash["name"].empty?
+    erb :"error/no_data_in_field"
   else
     game_to_change = Game.find(params["game"]["id"])
   
