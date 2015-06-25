@@ -1,3 +1,7 @@
+get "/game" do
+  erb :"/game/game_main"
+end
+
 get "/games_read" do
   erb :'game/game_read'
 end
