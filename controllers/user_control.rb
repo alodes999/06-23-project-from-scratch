@@ -1,23 +1,29 @@
 get "/user" do
   erb :"/user/user_main"
 end
-
+# This listener pulls from the user main page, and sends the user to the user_read page.
+# This page lists all of the user's in the DB
 get "/users_read" do
   erb :'/user/user_read'
 end
-
+# This listener pulls from the user main page, and sends the user to the user_add page.
+# This page allows the user to add a new unique user name
 get "/users_add" do
   erb :'/user/user_add'
 end
-
+# This listener pulls from the user main page, and sends the user to the user_change page.
+# This page allows the user to change the name of a user unattached to a review.
 get "/users_change" do
   erb :'/user/user_change'
 end
-
+# This listener pulls from the user main page, and sends the user to the user_delete page.
+# This page allows the user to delete a user unattached to a review
 get "/users_delete" do
   erb :'/user/user_delete'
 end
-
+# This listener pulls from the user main page, and sends the user to the user_games page.
+# This page will request a certain user, and will direct the user to a page showing a list
+# of all the reviews for that user
 get '/users_reviews' do
   erb :'/user/user_reviews'
 end
