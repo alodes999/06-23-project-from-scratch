@@ -1,0 +1,19 @@
+<h1>Delete Medium</h1>
+
+Please ensure the medium you wish to delete is not tied with a game!
+
+<p>Please pick a medium to delete</p>
+<!--This form lists each medium currently in the database, and allows selection of one to delete.
+  It returns the id of the selected medium, named "medium[delete_id]". 
+  Sends a call to the "/medium_delete_from_database" receiver -->
+<form action="/medium_delete_from_database">
+  <select name="medium[delete_id]">
+    <% Medium.all.each do |medium| %>
+      <option value="<%= medium.id %>"><%= medium.name %></option>
+    <% end %>
+  </select>
+  
+  <button type="input">I'm sure, delete medium</button>
+</form>
+
+<p><a href="/home">Go to home page</a></p>

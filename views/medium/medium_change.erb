@@ -1,0 +1,22 @@
+<h1>Change Medium</h1>
+
+<p>Please ensure the medium is not tied to any games before you change it!</p>
+
+<form action="/medium_change_in_database">
+<!--This form lists each medium currently in the database, as well as allows for input
+  for the new medium name.  It returns both the id, named "medium[change_id]", and the new
+  medium name, called "medium[new_name]".  Sends a call to the "/medium_change_in_database"
+  receiver -->
+  <select name="medium[change_id]">
+    <% Medium.all.each do |medium| %>
+      <option value="<%= medium.id %>"><%= medium.name %></option>
+    <% end %>
+  </select>
+  
+  <input type="text" placeholder="New Medium Name" name="medium[new_name]">
+  
+  <button type="submit">Change this Medium</button>
+  
+</form>
+
+<p><a href="/home">Go to home page</a></p>
