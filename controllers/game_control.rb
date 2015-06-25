@@ -49,6 +49,15 @@ get '/game_add_to_database' do
     erb :"error/data_exists"
   end
 end
+
+get "/game_change_input" do
+  @change_game_pick = Game.find(params["game"]["id"])
+  erb :"game/game_change_action"
+end
+
+get "/game_change_in_database" do
+  
+end
 # This listener pulls from the game_delete.erb page.  It grabs the param game[delete_id], an ID
 # of the row we want to delete in the games table.  It then deletes the row.
 # 

@@ -1,0 +1,15 @@
+<h1>Pick Game to Change</h1>
+
+<!--This form allows for input to change a game's information.  It returns the game id, called "game[name]".  
+  Sends a call to the "/game_change_input" receiver -->
+  <form action="/game_change_input">
+    <select name="game[id]">
+      <% Game.all.each do |game| %>
+        <option value="<%= game.id %>"><%= game.name %></option>
+      <% end %>
+    </select>
+    
+    <button type="submit">Pick game to change</button>
+
+  </form>
+<p><a href="/home">Go to home page</a></p>
