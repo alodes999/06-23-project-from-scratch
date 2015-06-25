@@ -21,7 +21,7 @@ class User
   # 
   # Returns an Array of Review class Objects that belong to the User looked up
   def self.reviews_for_user(id)
-    reviewslist = CONNECTION.execute("SELECT * FROM reviews WHERE user_id = #{id};")
+    reviewslist = CONNECTION.execute("SELECT * FROM reviews WHERE users_id = #{id};")
     user_array = []
     reviewslist.each do |review|
       user_array << Review.new(review)
