@@ -1,0 +1,12 @@
+<h1>Add User</h1>
+
+  <p>Please fill out the form to add a user</p>
+<!--This form allows for input for a new user name.  It returns the new user name, called "user_name".  
+  Sends a call to the "/user_add_to_database" receiver -->
+  <form action="/user_add_to_database">
+    <input type="text" placeholder="User Name" name="user[name]">
+    
+    <button type="submit">Add user</button>
+
+
+<p><a href="/home">Go to home page</a></p>

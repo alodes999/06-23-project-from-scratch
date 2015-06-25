@@ -1,0 +1,9 @@
+<h1>User List</h1>
+
+<ul>
+  <% User.all.each do |user| %>
+    <li><%= "#{user.id} - #{user.name}" %></li>
+  <% end %>
+</ul>
+
+<p><a href="/home">Go to home page</a></p>

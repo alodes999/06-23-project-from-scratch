@@ -1,0 +1,19 @@
+<h1>Delete User</h1>
+
+Please ensure the user you wish to delete is not tied with a review!
+
+<p>Please pick a user to delete</p>
+<!--This form lists each user currently in the database, and allows selection of one to delete.
+  It returns the id of the selected user, named "user_to_delete". 
+  Sends a call to the "/user_delete_from_database" receiver -->
+<form action="/user_delete_from_database">
+  <select name="user[delete]">
+    <% User.all.each do |user| %>
+      <option value="<%= user.id %>"><%= user.name %></option>
+    <% end %>
+  </select>
+  
+  <button type="input">I'm sure, delete user</button>
+</form>
+
+<p><a href="/home">Go to home page</a></p>
