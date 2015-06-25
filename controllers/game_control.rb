@@ -19,5 +19,5 @@ get "/games_delete" do
 end
 
 get "/games_reviews" do
-  erb :'game/games_reviews'
+  erb :'game/game_reviews'
 end
