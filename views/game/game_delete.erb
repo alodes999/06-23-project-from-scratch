@@ -1,0 +1,19 @@
+<h1>Delete Game</h1>
+
+Please ensure the game you wish to delete is not tied with a review!
+
+<p>Please pick a game to delete</p>
+<!--This form lists each game currently in the database, and allows selection of one to delete.
+  It returns the id of the selected game, named "game[delete_id]". 
+  Sends a call to the "/game_delete_from_database" receiver -->
+<form action="/game_delete_from_database">
+  <select name="game[delete_id]">
+    <% Game.all.each do |game| %>
+      <option value="<%= game.id %>"><%= game.name %></option>
+    <% end %>
+  </select>
+  
+  <button type="input">I'm sure, delete game</button>
+</form>
+
+<p><a href="/home">Go to home page</a></p>
