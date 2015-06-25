@@ -2,6 +2,9 @@
 
 <p>Please fill out the form to change a game</p>
 
+<% if @error=true %>
+  <p> Please make sure all fields have a value </p>
+<% end %>
 <form action="/game_change_in_database">
   <input type="text" placeholder="Game Name" name="game[name]">
   

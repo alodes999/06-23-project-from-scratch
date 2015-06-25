@@ -56,7 +56,21 @@ get "/game_change_input" do
 end
 
 get "/game_change_in_database" do
+  change_hash = params["game"]
+  if change_hash.name.empty?
+    @error = true
+    erb :"game/game_change_action"
+  else
+    game_to_change = Game.find(params["game"]["id"])
   
+    game_to_change.name = change_hash["name"]
+    game_to_change.genres_id = change_hash["genres_id"]
+    game_to_change.formats_id = change_hash["formats_id"]
+  
+    game_to_change.save
+  
+    erb :"success/data_changed"
+  end
 end
 # This listener pulls from the game_delete.erb page.  It grabs the param game[delete_id], an ID
 # of the row we want to delete in the games table.  It then deletes the row.
