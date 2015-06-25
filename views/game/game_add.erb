@@ -1,0 +1,25 @@
+<h1>Add Game</h1>
+
+  <p>Please fill out the form to add a game</p>
+<!--This form allows for input for a new game name.  It returns the new game name, called "game[name]".  
+  Sends a call to the "/game_add_to_database" receiver -->
+  <form action="/game_add_to_database">
+    <input type="text" placeholder="Game Name" name="game[name]">
+    
+    <select name="game[genres_id]">
+      <% Genre.all.each do |genre| %>
+        <option value="<%= genre.id %>"><%= genre.name %></option>
+      <% end %>
+    </select>
+    
+    <select name="game[formats_id]">
+      <% Format.all.each do |format| %>
+        <option value="<%= format.id %>"><%= format.name %></option>
+      <% end %>
+    </select>
+    
+    
+    <button type="submit">Add game</button>
+
+  </form>
+<p><a href="/home">Go to home page</a></p>

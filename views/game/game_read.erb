@@ -1,0 +1,36 @@
+<h1>Game List</h1>
+
+<table>
+  <tr>
+    <th> Game ID - </th>
+    <th> Game Name - </th>
+    <th> Genre ID* - </th>
+    <th> Format ID** </th>
+  </tr>
+  <% Game.all.each do |game| %>
+    <tr><td align='center'><%= "#{game.id}" %></td><td align='center'><%= "#{game.name}" %></td><td align='center'><%= "#{game.genres_id}" %></td><td align='center'><%= "#{game.formats_id}" %></td></tr>
+  <% end %>
+</table>
+<p></p>
+<table>
+  <tr>
+    <th> Genre ID* </th>
+    <th> Genre Name </th>
+  </tr>
+  <% Genre.all.each do |genre| %>
+    <tr><td align='center'><%= "#{genre.id}" %></td><td align='center'><%= "#{genre.name}" %></td></tr>
+  <% end %>
+</table>
+<p></p>
+<table>
+  <tr>
+    <th> Format ID** </th>
+    <th> Format Name </th>
+  </tr>
+  <% Format.all.each do |format| %>
+    <tr><td align='center'><%= "#{format.id}" %></td><td align='center'><%= "#{format.name}" %></td></tr>
+  <% end %>
+</table>
+
+<p><a href="/home">Go to home page</a></p>
+<p><a href="/game">Go to games page</a></p>

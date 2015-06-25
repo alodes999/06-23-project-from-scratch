@@ -21,6 +21,34 @@ end
 get "/games_reviews" do
   erb :'game/game_reviews'
 end
+# This listener pulls from the game_add.erb page.  It grabs the game[name] from
+# the input form there and then checks to see if the name is already in the DB
+# 
+# If it is a new game, it adds it and sends the user to the Success page listed
+# 
+# If it is a game already there, or a blank field is submitted, 
+# it sends the user to the Error page listed.
+get '/game_add_to_database' do
+  add_hash = {"name" => params["game"]["name"], "genres_id" => params["game"]["genres_id"].to_i, "formats_id" => params["game"]["formats_id"].to_i}
+  test = Game.all
+  test_names = []
+  
+  test.each do |item|
+    test_names << item.name
+  end
+  
+  if params["game"]["name"].empty? 
+    erb :"error/no_data_in_field"
+  elsif test == []
+    Game.add(add_hash)
+    erb :"success/data_added"
+  elsif !test_names.include?(params["game"]["name"])
+    Game.add(add_hash)
+    erb :"success/data_added"
+  else
+    erb :"error/data_exists"
+  end
+end
 # This listener pulls from the game_delete.erb page.  It grabs the param game[delete_id], an ID
 # of the row we want to delete in the games table.  It then deletes the row.
 # 
