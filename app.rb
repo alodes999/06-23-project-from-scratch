@@ -17,3 +17,5 @@ require_relative 'controllers/game_control.rb'
 require_relative 'controllers/user_control.rb'
 # require_relative 'controllers/review_control.rb'
 require_relative 'controllers/format_control.rb'
+
+binding.pry
