@@ -1,0 +1,22 @@
+<h1>Change Format</h1>
+
+<p>Please ensure the format is not tied to any games before you change it!</p>
+
+<form action="/format_change_in_database">
+<!--This form lists each format currently in the database, as well as allows for input
+  for the new format name.  It returns both the id, named "format[change_id]", and the new
+  format name, called "format[new_name]".  Sends a call to the "/format_change_in_database"
+  receiver -->
+  <select name="format[change_id]">
+    <% Format.all.each do |format| %>
+      <option value="<%= format.id %>"><%= format.name %></option>
+    <% end %>
+  </select>
+  
+  <input type="text" placeholder="New Format Name" name="format[new_name]">
+  
+  <button type="submit">Change this Format</button>
+  
+</form>
+
+<p><a href="/home">Go to home page</a></p>

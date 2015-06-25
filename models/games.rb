@@ -6,7 +6,7 @@ class Game
   extend DatabaseClassMethods
   include DatabaseInstanceMethods
 
-  attr_accessor :id, :name, :genres_id, :mediums_id
+  attr_accessor :id, :name, :genres_id, :formats_id
   # This is our initialize method for my Game class(model).  We have two attributes, the id, an Integer
   # corresponding to the row in our DB table, and name, the name of our game, as a String
   # 
@@ -15,7 +15,7 @@ class Game
     @id = options["id"]
     @name = options["name"]
     @genres_id = options["genres_id"]
-    @mediums_id = options["mediums_id"]
+    @formats_id = options["formats_id"]
   end
   # This class method allows us to list all of the reviews associated with the given Game.
   # 

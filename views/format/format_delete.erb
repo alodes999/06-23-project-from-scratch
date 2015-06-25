@@ -1,0 +1,19 @@
+<h1>Delete Format</h1>
+
+Please ensure the format you wish to delete is not tied with a game!
+
+<p>Please pick a format to delete</p>
+<!--This form lists each format currently in the database, and allows selection of one to delete.
+  It returns the id of the selected format, named "format[delete_id]". 
+  Sends a call to the "/format_delete_from_database" receiver -->
+<form action="/format_delete_from_database">
+  <select name="format[delete_id]">
+    <%Format.all.each do |format| %>
+      <option value="<%= format.id %>"><%= format.name %></option>
+    <% end %>
+  </select>
+  
+  <button type="input">I'm sure, delete format</button>
+</form>
+
+<p><a href="/home">Go to home page</a></p>
