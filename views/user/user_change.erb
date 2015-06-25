@@ -1,13 +1,13 @@
 <h1>Change User</h1>
 
-<p>Please ensure the user is not tied to any games before you change it!</p>
+<p>Please ensure the user is not tied to any reviews before you change it!</p>
 
 <form action="/user_change_in_database">
 <!--This form lists each user currently in the database, as well as allows for input
-  for the new user name.  It returns both the id, named "user_to_change", and the new
+  for the new user name.  It returns both the id, named "user[change_id]", and the new
   user name, called "user[new_name]".  Sends a call to the "/user_change_in_database"
   receiver -->
-  <select name="user_to_change">
+  <select name="user[change_id]">
     <% User.all.each do |user| %>
       <option value="<%= user.id %>"><%= user.name %></option>
     <% end %>
