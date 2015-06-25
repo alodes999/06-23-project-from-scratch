@@ -1,10 +1,10 @@
 <h1>Add Genre</h1>
 
   <p>Please fill out the form to add a genre</p>
-<!--This form allows for input for a new genre name.  It returns the new genre name, called "genre_name".  
+<!--This form allows for input for a new genre name.  It returns the new genre name, called "genre[name]".  
   Sends a call to the "/genre_add_to_database" receiver -->
   <form action="/genre_add_to_database">
-    <input type="text" placeholder="Genre Name" name="genre_name">
+    <input type="text" placeholder="Genre Name" name="genre[name]">
     
     <button type="submit">Add genre</button>
 

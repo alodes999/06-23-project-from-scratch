@@ -28,7 +28,7 @@ end
 get '/genre_games' do
   erb :'genre/genre_games'
 end
-# This listener pulls from the genre_add.erb page.  It grabs the genre_name from
+# This listener pulls from the genre_add.erb page.  It grabs the genre[name] from
 # the input form there and then checks to see if the name is already in the DB
 # 
 # If it is a new genre, it adds it and sends the user to the Success page listed
@@ -36,7 +36,7 @@ end
 # If it is a genre already there, or a blank field is submitted, 
 # it sends the user to the Error page listed.
 get '/genre_add_to_database' do
-  add_hash = {"name" => params["genre_name"]}
+  add_hash = {"name" => params["genre"]["name"]}
   test = Genre.all
   test_names = []
   
@@ -44,23 +44,24 @@ get '/genre_add_to_database' do
     test_names << item.name
   end
   
-  if params["genre_name"] == "" 
+  if params["genre"]["name"] == "" 
     erb :"error/no_data_in_field"
   elsif test == []
     Genre.add(add_hash)
     erb :"success/data_added"
-  elsif !test_names.include?(params["genre_name"])
+  elsif !test_names.include?(params["genre"]["name"])
     Genre.add(add_hash)
     erb :"success/data_added"
   else
     erb :"error/data_exists"
   end
 end
-# This listener pulls from the genre_change.erb page.  It grabs the genre_to_change,
+# This listener pulls from the genre_change.erb page.  It grabs the param genre[change_id],
 # an ID of the genre row we want to work with, and brings back an Object synched with the
 # corresponding row in the DB.
 # 
-# It then changes the name attribute for that Object, and saves the change back to the DB.\
+# It then changes the name attribute for that Object, using the 
+# genre[new_name] param and saves the change back to the DB.
 # 
 # Once we add the games table, it will check to see if the genre has games attached.  If it
 # does not, the change goes through and the user is sent to the Success page.
@@ -68,8 +69,8 @@ end
 # If games are attached, it sends the user to the Error page.
 get '/genre_change_in_database' do
 #  if Genre.games_in_genre(params["genre_to_change"]) == []
-    change_genre = Genre.find(params["genre_to_change"])
-    change_genre.name = params["new_genre_name"]
+    change_genre = Genre.find(params["genre"]["change_id"])
+    change_genre.name = params["genre"]["new_name"]
     
     change_genre.save
     erb :"success/data_changed"
@@ -77,7 +78,7 @@ get '/genre_change_in_database' do
 #    erb :"error/data_exists"
 #  end
 end
-# This listener pulls from the genre_delete.erb page.  It grabs the genre_to_delete, an ID
+# This listener pulls from the genre_delete.erb page.  It grabs the param genre[delete_id], an ID
 # of the row we want to delete in the genres table.  It then deletes the row.
 # 
 # Once we add the games table, it will check to see if the genre has games attached.  If it
@@ -86,7 +87,7 @@ end
 # If games are attached, it sends the user to the Error page.
 get '/genre_delete_from_database' do
 #  if Genre.games_in_genre(params["genre_to_delete"]) == []
-    Genre.delete(params["genre_to_delete"])
+    Genre.delete(params["genre"]["delete_id"])
     erb :"success/data_deleted"
 #  else
 #    erb :"error/data_exists"

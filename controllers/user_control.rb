@@ -20,12 +20,18 @@ end
 
 get "/user_add_to_database" do
   
+  
+  erb :'success/data_added'
 end
 
 get "/user_change_in_database" do
   
+  
+  erb :'success/data_changed'
 end
 
 get "/user_delete_from_database" do
   
+  
+  erb :'success/data_deleted'
 end
