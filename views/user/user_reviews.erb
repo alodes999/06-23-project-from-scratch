@@ -1,5 +1,18 @@
-<h1>Reviews by a User</h1>
+<h1>Reviews for a User</h1>
 
-<p>Will be a list to pick, and return a list of reviews given by a user</p>
+<p>Pick the User you'd like to list reviews for</p>
 
-<meta http-equiv="refresh" content="3, URL=/home">
+<form action="/users_list_of_reviews">
+<!--This form lists each user currently in the database. It returns the id, named "user[list_id]"  
+  Sends a call to the "/users_list_of_reviews receiver -->
+  <select name="user[list_id]">
+    <% User.all.each do |user| %>
+      <option value="<%= user.id %>"><%= user.name %></option>
+    <% end %>
+  </select>
+  
+  <button type="submit">List this User's Reviews</button>
+  
+</form>
+
+<p><a href="/home">Go to home page</a></p>

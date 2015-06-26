@@ -28,6 +28,16 @@ end
 get '/users_reviews' do
   erb :'/user/user_reviews'
 end
+# This listener pulls from the user_reviews.erb page.  It grabs the user[list_id] from
+# the input form and grabs the row from the users table, storing that 
+# object as @user.  It also goes to the reviews table and pulls back a list of all reviews 
+# that have that users_id, storing that Array as @review_list.  The route handler sends
+# those to user_reviews_list to display the list of the appropriate Reviews of that User  
+get "/users_list_of_reviews" do
+  @user = User.find(params["user"]["list_id"])
+  @review_list = User.reviews_for_user(params["user"]["list_id"])
+  erb :"user/user_reviews_list"
+end
 # This listener pulls from the user_add.erb page.  It grabs the user[name] from
 # the input form there and then checks to see if the name is already in the DB
 # 
