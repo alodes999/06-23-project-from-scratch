@@ -60,6 +60,7 @@ get "/game_change_input" do
     erb :"game/game_change_action"
   else
     erb :"error/data_exists"
+  end
 end
 # This listener pulls from the game_change_action.erb page.  It pushes the params["game"]
 # hash the form returns into a variable, checks to see if the name was empty, and passes the
