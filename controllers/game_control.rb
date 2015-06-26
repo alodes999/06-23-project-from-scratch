@@ -51,11 +51,15 @@ get '/game_add_to_database' do
 end
 # This listener pulls from the game_change.erb page.  It grabs the id of the Game
 # row we want to change from params["game"]["id"] and creates a Game Object.
-# It sends that game object to the game_change_action.erb page, where the changes are
-# made.
+# If there are no reviews tied to the game, it then sends that game object to 
+# the game_change_action.erb page, where the changes are made. If there are
+# reviews tied to the game, it sends the user to the data_exists error page.
 get "/game_change_input" do
   @change_game_pick = Game.find(params["game"]["id"])
-  erb :"game/game_change_action"
+  if Game.reviews_for_game(params["game"]["id"]) == []
+    erb :"game/game_change_action"
+  else
+    erb :"error/data_exists"
 end
 # This listener pulls from the game_change_action.erb page.  It pushes the params["game"]
 # hash the form returns into a variable, checks to see if the name was empty, and passes the
@@ -85,7 +89,7 @@ end
 # 
 # If reviews are attached, it sends the user to the Error page.
 get '/game_delete_from_database' do
-  if Game.reviews_for_game(params["game_to_delete"]) == []
+  if Game.reviews_for_game(params["game"]["delete_id"]) == []
     Game.delete(params["game"]["delete_id"])
     erb :"success/data_deleted"
   else

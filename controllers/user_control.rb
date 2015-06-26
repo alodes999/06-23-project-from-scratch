@@ -67,15 +67,15 @@ end
 # 
 # If reviews are attached, it sends the user to the Error page.
 get "/user_change_in_database" do
-  #  if User.reviews_for_user(params["user"]["change_id"]) == []
-      change_user = User.find(params["user"]["change_id"])
-      change_user.name = params["user"]["new_name"]
-    
-      change_user.save
-      erb :"success/data_changed"
-  #  else
-  #    erb :"error/data_exists"
-  #  end
+  if User.reviews_for_user(params["user"]["change_id"]) == []
+    change_user = User.find(params["user"]["change_id"])
+    change_user.name = params["user"]["new_name"]
+  
+    change_user.save
+    erb :"success/data_changed"
+  else
+    erb :"error/data_exists"
+  end
 end
 # This listener pulls from the user_delete.erb page.  It grabs the param user[delete_id], an ID
 # of the row we want to delete in the users table.  It then deletes the row.
@@ -85,10 +85,10 @@ end
 # 
 # If reviews are attached, it sends the user to the Error page.
 get "/user_delete_from_database" do
-  #  if User.reviews_for_user(params["user"]["delete_id"]) == []
-      User.delete(params["user"]["delete_id"])
-      erb :"success/data_deleted"
-  #  else
-  #    erb :"error/data_exists"
-  #  end
+  if User.reviews_for_user(params["user"]["delete_id"]) == []
+    User.delete(params["user"]["delete_id"])
+    erb :"success/data_deleted"
+  else
+    erb :"error/data_exists"
+  end
 end
