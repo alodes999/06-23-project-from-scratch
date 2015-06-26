@@ -46,7 +46,11 @@ module DatabaseInstanceMethods
     
     return self
   end
-  
+  # Grabs the name of the class, and turns it into a tableized version to use for SQL
+  # 
+  # Accepts no arguments, grabbing the name of the class itself
+  # 
+  # Returns a String of the class in SQL table form
   def tablename
     self.class.to_s.tableize
   end

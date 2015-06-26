@@ -68,11 +68,19 @@ module DatabaseClassMethods
     
     CONNECTION.execute("DELETE FROM #{table_name} WHERE id = #{id_to_delete};")
   end
-  
+  # Grabs the name of the class, and turns it into a tableized version to use for SQL
+  # 
+  # Accepts no arguments, grabbing the name of the class itself
+  # 
+  # Returns a String of the class in SQL table form
   def get_table_name
     self.to_s.tableize
   end
-  
+  # Makes an Array of Objects for a Hash entered as an argument.
+  # 
+  # Accepts one argument, a Hash that we want to turn into Objects to push into an Array
+  # 
+  # Returns an Array full of Objects of the Class that calls the method
   def make_object_array(hash)
     object_array = []
 
@@ -82,6 +90,4 @@ module DatabaseClassMethods
 
     object_array
   end
-  
-  
 end
