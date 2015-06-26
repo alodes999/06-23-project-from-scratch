@@ -1,6 +1,36 @@
+<h1>Review List</h1>
 
-
-
-
+<table>
+  <tr>
+    <th> Review ID - </th>
+    <th> User ID* - </th>
+    <th> Game ID** - </th>
+    <th> Review Score </th>
+  </tr>
+  <% Review.all.each do |review| %>
+    <tr><td align='center'><%= "#{review.id}" %></td><td align='center'><%= "#{review.users_id}" %></td><td align='center'><%= "#{review.games_id}" %></td><td align='center'><%= "#{review.score}" %></td></tr>
+  <% end %>
+</table>
+<p></p>
+<table>
+  <tr>
+    <th> User ID* </th>
+    <th> User Name </th>
+  </tr>
+  <% User.all.each do |user| %>
+    <tr><td align='center'><%= "#{user.id}" %></td><td align='center'><%= "#{user.name}" %></td></tr>
+  <% end %>
+</table>
+<p></p>
+<table>
+  <tr>
+    <th> Game ID** </th>
+    <th> Game Name </th>
+  </tr>
+  <% Game.all.each do |game| %>
+    <tr><td align='center'><%= "#{game.id}" %></td><td align='center'><%= "#{game.name}" %></td></tr>
+  <% end %>
+</table>
 
 <p><a href="/home">Go to home page</a></p>
+<p><a href="/review">Go to reviews page</a></p>
