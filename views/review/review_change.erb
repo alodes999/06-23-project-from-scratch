@@ -1,6 +1,15 @@
+<h1>Pick Review to Change</h1>
 
+<!--This form allows for input to change a review's information.  It returns the review id, called "review[id]".  
+  Sends a call to the "/review_change_input" receiver -->
+  <form action="/review_change_input">
+    <select name="review[id]">
+      <% Review.all.each do |review| %>
+        <option value="<%= review.id %>">ID:<%= review.id %> - User:<%= review.users_id%> - Game:<%= review.games_id %> - Score:<%= review.score %></option>
+      <% end %>
+    </select>
+    
+    <button type="submit">Pick review to change</button>
 
-
-
-
+  </form>
 <p><a href="/home">Go to home page</a></p>

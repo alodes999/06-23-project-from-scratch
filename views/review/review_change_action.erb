@@ -1,0 +1,39 @@
+<h1>Change Game Form</h1>
+
+<p>Please fill out the form to change a review</p>
+<!--This form is the form the user submits to change the data of a Game table row.
+The route handler passes the Object to this form to change, with the genre and
+format plugged in as defaults for those fields.  The user can change those select
+fields, and type in a new name.  The form then sends these values back to the
+route handler to update the Object and synch that Object with the database row
+in question.-->
+<form action="/review_change_in_database">
+
+  <select name="review[users_id]">
+    <% User.all.each do |user| %>
+      <% if user.id != @change_review_pick.id %>
+        <option value="<%= user.id %>"><%= user.name %></option>
+      <% else %>
+        <option value="<%= user.id %>" selected><%= user.name %></option>
+      <% end %>
+    <% end %>
+  </select>
+  
+  <select name="review[games_id]">
+    <% Game.all.each do |game| %>
+      <% if game.id != @change_review_pick.id %>
+        <option value="<%= game.id %>"><%= game.name %></option>
+      <% else %>
+        <option value="<%= game.id %>" selected><%= game.name %></option>
+      <% end %>
+    <% end %>
+  </select>
+  
+  <input type="number" placeholder="Review Score" name="review[score]">
+  <input type="hidden" name="review[id]" value="<%= @change_review_pick.id  %>">
+  
+  <button type="submit">Change review information</button>
+
+</form>
+
+<p><a href="/home">Go to home page</a></p>
