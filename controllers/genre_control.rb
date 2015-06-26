@@ -34,8 +34,8 @@ end
 # that have that genres_id, storing that Array as @game_list.  The route handler sends
 # those to genre_games_of to display the list of the appropriate Games of that Genre  
 get "/genre_list_of_games" do
-  @genre = Game.find(params["genre"]["list_id"])
-  @game_list = Genre.games_in_genre(params["genre"]["list_id"])
+  @genre = Genre.find(params["genre"]["list_id"])
+  @game_list = Game.games_in_genre(params["genre"]["list_id"])
   erb :"genre/genre_games_of"
 end
 # This listener pulls from the genre_add.erb page.  It grabs the genre[name] from

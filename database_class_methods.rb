@@ -8,8 +8,7 @@ module DatabaseClassMethods
   # 
   # Returns an Array of Objects of the Class that sent the method.
   def all
-    table_name = get_table_name
-    results = CONNECTION.execute("SELECT * FROM #{table_name};")
+    results = CONNECTION.execute("SELECT * FROM #{get_table_name};")
     array_list = make_object_array(results)
   end
   # Finds the row matching the id provided in the Class table that calls the method
@@ -18,9 +17,7 @@ module DatabaseClassMethods
   # 
   # Returns an Object synced with the matching row in the calling Class's table.
   def find(id)
-    table_name = get_table_name
-    
-    result = CONNECTION.execute("SELECT * FROM #{table_name} WHERE id = #{id};").first
+    result = CONNECTION.execute("SELECT * FROM #{get_table_name} WHERE id = #{id};").first
     
     self.new(result)
   end
@@ -38,7 +35,6 @@ module DatabaseClassMethods
   # Returns an Object of the Class type calling the method, and also adds the new row
   # to the table.
   def add(arguments={})
-    table_name = get_table_name
     columns_array = arguments.keys
     values_array = arguments.values  
     columns_for_sql = columns_array.join(", ")
@@ -53,7 +49,7 @@ module DatabaseClassMethods
     end
     
     values_for_sql = ind_values_for_sql.join(", ")
-    CONNECTION.execute("INSERT INTO #{table_name} (#{columns_for_sql}) VALUES (#{values_for_sql});")
+    CONNECTION.execute("INSERT INTO #{get_table_name} (#{columns_for_sql}) VALUES (#{values_for_sql});")
     arguments["id"] = CONNECTION.last_insert_row_id
     self.new(arguments)
   end
