@@ -2,4 +2,19 @@
 
 <p>Pick the Genre you'd like to list games in</p>
 
+<form action="/genre_list_of_games">
+<!--This form lists each genre currently in the database, as well as allows for input
+  for the new genre name.  It returns both the id, named "genre[change_id]", and the new
+  genre name, called "genre[new_name]".  Sends a call to the "/genre_change_in_database"
+  receiver -->
+  <select name="genre[list_id]">
+    <% Genre.all.each do |genre| %>
+      <option value="<%= genre.id %>"><%= genre.name %></option>
+    <% end %>
+  </select>
+  
+  <button type="submit">List this Genre</button>
+  
+</form>
+
 <p><a href="/home">Go to home page</a></p>

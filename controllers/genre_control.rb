@@ -28,6 +28,16 @@ end
 get '/genre_games' do
   erb :'genre/genre_games'
 end
+# This listener pulls from the genre_games.erb page.  It grabs the genre[list_id] from
+# the input form and grabs the row from the genres table, storing that 
+# object as @genre.  It also goes to the games table and pulls back a list of all games 
+# that have that genres_id, storing that Array as @game_list.  The route handler sends
+# those to genre_games_of to display the list of the appropriate Games of that Genre  
+get "/genre_list_of_games" do
+  @genre = Genre.find(params["genre"]["list_id"])
+  @game_list = Genre.games_in_genre(params["genre"]["list_id"])
+  erb :"genre/genre_games_of"
+end
 # This listener pulls from the genre_add.erb page.  It grabs the genre[name] from
 # the input form there and then checks to see if the name is already in the DB
 # 

@@ -1,4 +1,4 @@
-<h1>List of Games in Format <%= @format.name %></h1>
+<h1>List of <%= @format.name %></h1>
 
 <% if @game_list == [] %>
 
@@ -11,9 +11,11 @@
     <th> Game ID - </th>
     <th> Game Name </th>
   </tr>
-  <% Game.all.each do |game| %>
+  <% @game_list.each do |game| %>
     <tr><td align='center'><%= "#{game.id}" %></td><td align='center'><%= "#{game.name}" %></td></tr>
   <% end %>
 </table>
 
 <% end %>
+
+<p><a href="/home">Go to home page</a></p>

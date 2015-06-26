@@ -27,11 +27,15 @@ end
 get "/format_games" do
   erb :'format/format_games'
 end
-
+# This listener pulls from the format_games.erb page.  It grabs the format[list_id] from
+# the input form and grabs the row from the formats table, storing that 
+# object as @format.  It also goes to the games table and pulls back a list of all games 
+# that have that formats_id, storing that Array as @game_list.  The route handler sends
+# those to format_games_of to display the list of the appropriate Games of that Format  
 get "/format_list_of_games" do
   @format = Format.find(params["format"]["list_id"])
   @game_list = Format.games_in_format(params["format"]["list_id"])
-  erb :"format_games_of"
+  erb :"format/format_games_of"
 end
 # This listener pulls from the format_add.erb page.  It grabs the format[name] from
 # the input form there and then checks to see if the name is already in the DB
