@@ -19,7 +19,17 @@ module DatabaseInstanceMethods
   # Takes no arguments, using the instance's attributes
   # 
   # Returns the Object itself, along with syncing the row and Object
-  def save
+  def save    
+    CONNECTION.execute("UPDATE #{tablename} SET #{ready_for_sql(make_hash)} WHERE id = #{self.id}")
+    
+    return self
+  end
+  # Makes a hash of the Class's attributes that calls the method.
+  #
+  # Accepts no arguments
+  # 
+  # Returns a Hash of the instance variable names
+  def make_hash
     variables = self.instance_variables
     attr_hash = {}
     
@@ -27,21 +37,26 @@ module DatabaseInstanceMethods
       attr_hash["#{var.slice(1..-1)}"] = self.send("#{var.slice(1..-1)}")
     end
     
+    attr_hash
+  end
+  # Makes a list of column names and values for SQL to save information to the table
+  # 
+  # Accepts 1 argument, a Hash containing keys of the Class Attributes, and values of the contents of those
+  # 
+  # Returns a String of the key/value combinations, to plug into a SQL request
+  def ready_for_sql(hash)
     single_variables = []
     
-    attr_hash.each do |k, v|
+    hash.each do |k, v|
       if v.is_a?(String)
         single_variables << "#{k} = '#{v}'"
       else
         single_variables << "#{k} = #{v}"
       end
-    end
+    end 
+    vars_to_sql = single_variables.join(", ")    
     
-    vars_to_sql = single_variables.join(", ")
-    
-    CONNECTION.execute("UPDATE #{tablename} SET #{vars_to_sql} WHERE id = #{self.id}")
-    
-    return self
+    vars_to_sql
   end
   # Grabs the name of the class, and turns it into a tableized version to use for SQL
   # 
