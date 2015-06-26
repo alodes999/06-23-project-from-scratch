@@ -35,7 +35,7 @@ end
 # those to game_reviews_list to display the list of the appropriate Reviews of that Game  
 get "/games_list_of_reviews" do
   @game = Game.find(params["game"]["list_id"])
-  @review_list = Game.reviews_for_game(params["game"]["list_id"])
+  @review_list = Review.reviews_for_game(params["game"]["list_id"])
   erb :"game/game_reviews_list"
 end
 # This listener pulls from the game_add.erb page.  It grabs the game[name] from
@@ -73,7 +73,7 @@ end
 # reviews tied to the game, it sends the user to the data_exists error page.
 get "/game_change_input" do
   @change_game_pick = Game.find(params["game"]["id"])
-  if Game.reviews_for_game(params["game"]["id"]) == []
+  if Review.reviews_for_game(params["game"]["id"]) == []
     erb :"game/game_change_action"
   else
     erb :"error/data_associated"
@@ -105,7 +105,7 @@ end
 # 
 # If reviews are attached, it sends the user to the Error page.
 get '/game_delete_from_database' do
-  if Game.reviews_for_game(params["game"]["delete_id"]) == []
+  if Review.reviews_for_game(params["game"]["delete_id"]) == []
     Game.delete(params["game"]["delete_id"])
     erb :"success/data_deleted"
   else

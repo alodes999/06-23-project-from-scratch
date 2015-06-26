@@ -15,19 +15,4 @@ class Genre
     @id = options["id"]
     @name = options["name"]
   end
-  # This class method allows us to list all of the games associated with the given Genre.
-  # 
-  # This accepts one argument, the id of the genre we want to look up
-  # 
-  # Returns an Array of Game class Objects that belong to the genre looked up
-  def self.games_in_genre(id)
-    gameslist = CONNECTION.execute("SELECT * FROM games WHERE genres_id = #{id};")
-    genre_array = []
-    gameslist.each do |game|
-      genre_array << Game.new(game)
-    end
-
-    genre_array
-  end
-
 end

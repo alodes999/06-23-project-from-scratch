@@ -15,19 +15,4 @@ class Format
     @id = options["id"]
     @name = options["name"]
   end
-  # This class method allows us to list all of the games associated with the given Format.
-  # 
-  # This accepts one argument, the id of the format we want to look up
-  # 
-  # Returns an Array of Game class Objects that belong to the format looked up
-  def self.games_in_format(id)
-    gameslist = CONNECTION.execute("SELECT * FROM games WHERE formats_id = #{id};")
-    format_array = []
-    gameslist.each do |game|
-      format_array << Game.new(game)
-    end
-
-    format_array
-  end
-
 end

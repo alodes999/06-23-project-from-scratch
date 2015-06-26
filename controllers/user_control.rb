@@ -35,7 +35,7 @@ end
 # those to user_reviews_list to display the list of the appropriate Reviews of that User  
 get "/users_list_of_reviews" do
   @user = User.find(params["user"]["list_id"])
-  @review_list = User.reviews_for_user(params["user"]["list_id"])
+  @review_list = Review.reviews_for_user(params["user"]["list_id"])
   erb :"user/user_reviews_list"
 end
 # This listener pulls from the user_add.erb page.  It grabs the user[name] from
@@ -75,7 +75,7 @@ end
 # 
 # If reviews are attached, it sends the user to the Error page.
 get "/user_change_in_database" do
-  if User.reviews_for_user(params["user"]["change_id"]) == []
+  if Review.reviews_for_user(params["user"]["change_id"]) == []
     change_user = User.find(params["user"]["change_id"])
     change_user.name = params["user"]["new_name"]
   
@@ -90,7 +90,7 @@ end
 # 
 # If reviews are attached, it sends the user to the Error page.
 get "/user_delete_from_database" do
-  if User.reviews_for_user(params["user"]["delete_id"]) == []
+  if Review.reviews_for_user(params["user"]["delete_id"]) == []
     User.delete(params["user"]["delete_id"])
     erb :"success/data_deleted"
   else

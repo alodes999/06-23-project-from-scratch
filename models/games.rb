@@ -19,18 +19,32 @@ class Game
     @genres_id = options["genres_id"]
     @formats_id = options["formats_id"]
   end
-  # This class method allows us to list all of the reviews associated with the given Game.
+  # This class method allows us to list all of the games associated with the given Format.
   # 
-  # This accepts one argument, the id of the Game we want to look up
+  # This accepts one argument, the id of the format we want to look up
   # 
-  # Returns an Array of Review class Objects that belong to the Game looked up
-  def self.reviews_for_game(id)
-    reviewslist = CONNECTION.execute("SELECT * FROM reviews WHERE games_id = #{id};")
-    game_array = []
-    reviewslist.each do |review|
-      game_array << Review.new(review)
+  # Returns an Array of Game class Objects that belong to the format looked up
+  def self.games_in_format(id)
+    gameslist = CONNECTION.execute("SELECT * FROM games WHERE formats_id = #{id};")
+    format_array = []
+    gameslist.each do |game|
+      format_array << Game.new(game)
     end
 
-    game_array
+    format_array
+  end
+  # This class method allows us to list all of the games associated with the given Genre.
+  # 
+  # This accepts one argument, the id of the genre we want to look up
+  # 
+  # Returns an Array of Game class Objects that belong to the genre looked up
+  def self.games_in_genre(id)
+    gameslist = CONNECTION.execute("SELECT * FROM games WHERE genres_id = #{id};")
+    genre_array = []
+    gameslist.each do |game|
+      genre_array << Game.new(game)
+    end
+
+    genre_array
   end
 end

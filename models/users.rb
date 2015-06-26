@@ -15,18 +15,4 @@ class User
     @id = options["id"]
     @name = options["name"]
   end
-  # This class method allows us to list all of the reviews associated with the given User.
-  # 
-  # This accepts one argument, the id of the User we want to look up
-  # 
-  # Returns an Array of Review class Objects that belong to the User looked up
-  def self.reviews_for_user(id)
-    reviewslist = CONNECTION.execute("SELECT * FROM reviews WHERE users_id = #{id};")
-    user_array = []
-    reviewslist.each do |review|
-      user_array << Review.new(review)
-    end
-
-    user_array
-  end
 end

@@ -34,7 +34,7 @@ end
 # that have that genres_id, storing that Array as @game_list.  The route handler sends
 # those to genre_games_of to display the list of the appropriate Games of that Genre  
 get "/genre_list_of_games" do
-  @genre = Genre.find(params["genre"]["list_id"])
+  @genre = Game.find(params["genre"]["list_id"])
   @game_list = Genre.games_in_genre(params["genre"]["list_id"])
   erb :"genre/genre_games_of"
 end
@@ -75,7 +75,7 @@ end
 # 
 # If games are attached, it sends the user to the Error page.
 get '/genre_change_in_database' do
-  if Genre.games_in_genre(params["genre"]["change_id"].to_i) == []
+  if Game.games_in_genre(params["genre"]["change_id"].to_i) == []
     change_genre = Genre.find(params["genre"]["change_id"])
     change_genre.name = params["genre"]["new_name"]
     
@@ -90,7 +90,7 @@ end
 # 
 # If games are attached, it sends the user to the Error page.
 get '/genre_delete_from_database' do
-  if Genre.games_in_genre(params["genre"]["delete_id"].to_i) == []
+  if Game.games_in_genre(params["genre"]["delete_id"].to_i) == []
     Genre.delete(params["genre"]["delete_id"])
     erb :"success/data_deleted"
   else

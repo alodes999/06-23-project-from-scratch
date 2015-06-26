@@ -34,7 +34,7 @@ end
 # those to format_games_of to display the list of the appropriate Games of that Format  
 get "/format_list_of_games" do
   @format = Format.find(params["format"]["list_id"])
-  @game_list = Format.games_in_format(params["format"]["list_id"])
+  @game_list = Game.games_in_format(params["format"]["list_id"])
   erb :"format/format_games_of"
 end
 # This listener pulls from the format_add.erb page.  It grabs the format[name] from
@@ -77,7 +77,7 @@ end
 # 
 # If games are attached, it sends the user to the Error page.
 get '/format_change_in_database' do
-  if Format.games_in_format(params["format"]["change_id"]) == []
+  if Game.games_in_format(params["format"]["change_id"]) == []
     change_format = Format.find(params["format"]["change_id"])
     change_format.name = params["format"]["new_name"]
     
@@ -95,7 +95,7 @@ end
 # 
 # If games are attached, it sends the user to the Error page.
 get '/format_delete_from_database' do
-  if Format.games_in_format(params["format"]["delete_id"]) == []
+  if Game.games_in_format(params["format"]["delete_id"]) == []
     Format.delete(params["format"]["delete_id"])
     erb :"success/data_deleted"
   else

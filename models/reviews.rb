@@ -20,4 +20,32 @@ class Review
     @users_id = options["users_id"]
     @score = options["score"]
   end
+  # This class method allows us to list all of the reviews associated with the given Game.
+  # 
+  # This accepts one argument, the id of the Game we want to look up
+  # 
+  # Returns an Array of Review class Objects that belong to the Game looked up
+  def self.reviews_for_game(id)
+    reviewslist = CONNECTION.execute("SELECT * FROM reviews WHERE games_id = #{id};")
+    game_array = []
+    reviewslist.each do |review|
+      game_array << Review.new(review)
+    end
+
+    game_array
+  end
+  # This class method allows us to list all of the reviews associated with the given User.
+  # 
+  # This accepts one argument, the id of the User we want to look up
+  # 
+  # Returns an Array of Review class Objects that belong to the User looked up
+  def self.reviews_for_user(id)
+    reviewslist = CONNECTION.execute("SELECT * FROM reviews WHERE users_id = #{id};")
+    user_array = []
+    reviewslist.each do |review|
+      user_array << Review.new(review)
+    end
+
+    user_array
+  end
 end
