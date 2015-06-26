@@ -51,20 +51,10 @@ end
 # it sends the user to the Error page listed.
 get '/genre_add_to_database' do
   add_hash = {"name" => params["genre"]["name"]}
-  test = Genre.all
-  test_names = []
-  
-  test.each do |item|
-    test_names << item.name
-  end
-  
-  if params["genre"]["name"] == "" 
+
+  if params["genre"]["name"] == ""
     erb :"error/no_data_in_field"
-  elsif test == []
-    Genre.add(add_hash)
-    erb :"success/data_added"
-  elsif !test_names.include?(params["genre"]["name"])
-    Genre.add(add_hash)
+  elsif Genre.add_with_name_val(add_hash)
     erb :"success/data_added"
   else
     erb :"error/data_exists"

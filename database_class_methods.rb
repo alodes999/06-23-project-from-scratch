@@ -53,6 +53,25 @@ module DatabaseClassMethods
     arguments["id"] = CONNECTION.last_insert_row_id
     self.new(arguments)
   end
+  # Adds rows to the designated table after testing for name validation
+  # 
+  # Accepts one argument, the Hash of values to add to the table
+  # 
+  # Returns either the new Object from the add method, or false if validation fails
+  def add_with_name_val(hash)
+    test = self.all
+    test_names = []
+  
+    test.each do |item|
+      test_names << item.name
+    end
+    
+    if !test_names.include?(hash["name"])
+      add(hash)
+    else
+      false
+    end
+  end
   # Deletes a row from the table.  Can be called on the class itself, and deletes a row from the
   # Class table that called it
   # 

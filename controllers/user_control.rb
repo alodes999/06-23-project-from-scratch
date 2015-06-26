@@ -52,20 +52,10 @@ end
 # it sends the user to the Error page listed.
 get "/user_add_to_database" do
   add_hash = {"name" => params["user"]["name"]}
-  test = User.all
-  test_names = []
   
-  test.each do |item|
-    test_names << item.name
-  end
-  
-  if params["user"]["name"].empty? 
+  if params["user"]["name"] == ""
     erb :"error/no_data_in_field"
-  elsif test == []
-    User.add(add_hash)
-    erb :"success/data_added"
-  elsif !test_names.include?(params["user"]["name"])
-    User.add(add_hash)
+  elsif User.add_with_name_val(add_hash)
     erb :"success/data_added"
   else
     erb :"error/data_exists"

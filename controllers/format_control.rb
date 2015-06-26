@@ -50,20 +50,10 @@ end
 # it sends the user to the Error page listed.
 get '/format_add_to_database' do
   add_hash = {"name" => params["format"]["name"]}
-  test = Format.all
-  test_names = []
   
-  test.each do |item|
-    test_names << item.name
-  end
-  
-  if params["format"]["name"] == "" 
+  if params["format"]["name"] == ""
     erb :"error/no_data_in_field"
-  elsif test == []
-    Format.add(add_hash)
-    erb :"success/data_added"
-  elsif !test_names.include?(params["format"]["name"])
-    Format.add(add_hash)
+  elsif Format.add_with_name_val(add_hash)
     erb :"success/data_added"
   else
     erb :"error/data_exists"

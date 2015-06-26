@@ -56,20 +56,10 @@ end
 # it sends the user to the Error page listed.
 get '/game_add_to_database' do
   add_hash = {"name" => params["game"]["name"], "genres_id" => params["game"]["genres_id"].to_i, "formats_id" => params["game"]["formats_id"].to_i}
-  test = Game.all
-  test_names = []
-  
-  test.each do |item|
-    test_names << item.name
-  end
-  
-  if params["game"]["name"].empty? 
+
+  if params["game"]["name"] == ""
     erb :"error/no_data_in_field"
-  elsif test == []
-    Game.add(add_hash)
-    erb :"success/data_added"
-  elsif !test_names.include?(params["game"]["name"])
-    Game.add(add_hash)
+  elsif Game.add_with_name_val(add_hash)
     erb :"success/data_added"
   else
     erb :"error/data_exists"
