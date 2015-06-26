@@ -17,7 +17,10 @@ end
 get "/review_change" do
   erb :'/review/review_change'
 end
-
+# This listener pulls from the review_change page.  It takes the id returned from there and
+# finds the row in the review database that we want to change.  It stores this information in
+# an Object called @change_review_pick, and passes that Object into the review_change_action
+# erb file for the changes.
 get "/review_change_input" do
   @change_review_pick = Review.find(params["review"]["id"])
   erb :'/review/review_change_action'
