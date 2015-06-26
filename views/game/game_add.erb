@@ -8,13 +8,13 @@
     <input type="text" placeholder="Game Name" name="game[name]">
     
     <select name="game[genres_id]">
-      <% Genre.all.each do |genre| %>
+      <% @genre.each do |genre| %>
         <option value="<%= genre.id %>"><%= genre.name %></option>
       <% end %>
     </select>
     
     <select name="game[formats_id]">
-      <% Format.all.each do |format| %>
+      <% @format.each do |format| %>
         <option value="<%= format.id %>"><%= format.name %></option>
       <% end %>
     </select>

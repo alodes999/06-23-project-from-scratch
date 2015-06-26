@@ -6,7 +6,7 @@
 <!--This form lists each game currently in the database. It returns the id, named "game[list_id]"  
   Sends a call to the "/games_list_of_reviews receiver -->
   <select name="game[list_id]">
-    <% Game.all.each do |game| %>
+    <% @game.each do |game| %>
       <option value="<%= game.id %>"><%= game.name %></option>
     <% end %>
   </select>

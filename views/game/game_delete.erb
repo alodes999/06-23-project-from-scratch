@@ -8,7 +8,7 @@ Please ensure the game you wish to delete is not tied with a review!
   Sends a call to the "/game_delete_from_database" receiver -->
 <form action="/game_delete_from_database">
   <select name="game[delete_id]">
-    <% Game.all.each do |game| %>
+    <% @game.each do |game| %>
       <option value="<%= game.id %>"><%= game.name %></option>
     <% end %>
   </select>

@@ -5,27 +5,35 @@ end
 # This listener pulls from the game main page, and sends the user to the game_read page.
 # This page lists all of the game's in the DB
 get "/games_read" do
+  @game = Game.all
+  @genre = Genre.all
+  @format = Format.all
   erb :'game/game_read'
 end
 # This listener pulls from the game main page, and sends the user to the game_add page.
 # This page allows the user to add a new unique game name
 get "/games_add" do
+  @genre = Genre.all
+  @format = Format.all
   erb :'game/game_add'
 end
 # This listener pulls from the game main page, and sends the user to the game_change page.
 # This page allows the user to change the name of a game unattached to a game.
 get "/games_change" do
+  @game = Game.all
   erb :'game/game_change'
 end
 # This listener pulls from the game main page, and sends the user to the game_delete page.
 # This page allows the user to delete a game unattached to a game
 get "/games_delete" do
+  @game = Game.all
   erb :'game/game_delete'
 end
 # This listener pulls from the game main page, and sends the user to the game_reviews page.
 # This page will request a certain game, and will direct the user to a page showing a list
 # of all the reviews in that game
 get "/games_reviews" do
+  @game = Game.all
   erb :'game/game_reviews'
 end
 # This listener pulls from the game_reviews.erb page.  It grabs the game[list_id] from
@@ -34,6 +42,7 @@ end
 # that have that games_id, storing that Array as @review_list.  The route handler sends
 # those to game_reviews_list to display the list of the appropriate Reviews of that Game  
 get "/games_list_of_reviews" do
+  @users = User.all
   @game = Game.find(params["game"]["list_id"])
   @review_list = Review.reviews_for_game(params["game"]["list_id"])
   erb :"game/game_reviews_list"
@@ -72,6 +81,8 @@ end
 # the game_change_action.erb page, where the changes are made. If there are
 # reviews tied to the game, it sends the user to the data_exists error page.
 get "/game_change_input" do
+  @genre = Genre.all
+  @format = Format.all
   @change_game_pick = Game.find(params["game"]["id"])
   if Review.reviews_for_game(params["game"]["id"]) == []
     erb :"game/game_change_action"

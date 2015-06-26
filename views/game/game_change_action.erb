@@ -11,7 +11,7 @@ in question.-->
   <input type="text" placeholder="Game Name" name="game[name]">
   
   <select name="game[genres_id]">
-    <% Genre.all.each do |genre| %>
+    <% @genre.each do |genre| %>
       <% if genre.id != @change_game_pick.id %>
         <option value="<%= genre.id %>"><%= genre.name %></option>
       <% else %>
@@ -21,7 +21,7 @@ in question.-->
   </select>
   
   <select name="game[formats_id]">
-    <% Format.all.each do |format| %>
+    <% @format.each do |format| %>
       <% if format.id != @change_game_pick.id %>
         <option value="<%= format.id %>"><%= format.name %></option>
       <% else %>

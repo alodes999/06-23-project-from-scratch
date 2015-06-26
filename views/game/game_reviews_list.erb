@@ -22,7 +22,7 @@
 <p>User List</p>
 
 <ul>
-  <% User.all.each do |user| %>
+  <% @user.each do |user| %>
     <li><%= "#{user.id} - #{user.name}" %></li>
   <% end %>
 </ul>

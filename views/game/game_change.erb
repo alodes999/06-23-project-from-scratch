@@ -4,7 +4,7 @@
   Sends a call to the "/game_change_input" receiver -->
   <form action="/game_change_input">
     <select name="game[id]">
-      <% Game.all.each do |game| %>
+      <% @game.each do |game| %>
         <option value="<%= game.id %>"><%= game.name %></option>
       <% end %>
     </select>
