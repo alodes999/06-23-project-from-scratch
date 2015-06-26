@@ -82,10 +82,8 @@ get "/game_change_in_database" do
   end
 end
 # This listener pulls from the game_delete.erb page.  It grabs the param game[delete_id], an ID
-# of the row we want to delete in the games table.  It then deletes the row.
-# 
-# Once we add the games table, it will check to see if the game has reviews attached.  If it
-# does not, the delete goes through and the user is sent to the Success page.
+# of the row we want to delete in the games table.  It then deletes the row, and sends the 
+# user to the success page.
 # 
 # If reviews are attached, it sends the user to the Error page.
 get '/game_delete_from_database' do

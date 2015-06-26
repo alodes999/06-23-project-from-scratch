@@ -62,9 +62,6 @@ end
 # It then changes the name attribute for that Object, using the 
 # user[new_name] param and saves the change back to the DB.
 # 
-# Once we add the reviews table, it will check to see if the user has reviews attached.  If it
-# does not, the change goes through and the user is sent to the Success page.
-# 
 # If reviews are attached, it sends the user to the Error page.
 get "/user_change_in_database" do
   if User.reviews_for_user(params["user"]["change_id"]) == []
@@ -79,9 +76,6 @@ get "/user_change_in_database" do
 end
 # This listener pulls from the user_delete.erb page.  It grabs the param user[delete_id], an ID
 # of the row we want to delete in the users table.  It then deletes the row.
-# 
-# Once we add the reviews table, it will check to see if the user has reviews attached.  If it
-# does not, the delete goes through and the user is sent to the Success page.
 # 
 # If reviews are attached, it sends the user to the Error page.
 get "/user_delete_from_database" do
