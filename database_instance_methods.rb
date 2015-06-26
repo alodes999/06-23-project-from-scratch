@@ -9,7 +9,7 @@ module DatabaseInstanceMethods
   # 
   # Returns a String or Integer, or whatever value is stored in the field we are requesting
   def get(field)
-    table_name = self.class.to_s.tableize
+    table_name = tablename
     
     result = CONNECTION.execute("SELECT * FROM #{table_name} WHERE id = #{@id}}").first
     
@@ -22,7 +22,7 @@ module DatabaseInstanceMethods
   # 
   # Returns the Object itself, along with syncing the row and Object
   def save
-    table_name = self.class.to_s.tableize
+    table_name = tablename
     variables = self.instance_variables
     attr_hash = {}
     
@@ -45,5 +45,9 @@ module DatabaseInstanceMethods
     CONNECTION.execute("UPDATE #{table_name} SET #{vars_to_sql} WHERE id = #{self.id}")
     
     return self
+  end
+  
+  def tablename
+    self.class.to_s.tableize
   end
 end

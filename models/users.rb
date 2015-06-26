@@ -6,7 +6,8 @@ class User
   extend DatabaseClassMethods
   include DatabaseInstanceMethods
 
-  attr_accessor :id, :name
+  attr_reader :id
+  attr_accessor :name
   # This is our initialize method for my User class(model).  We have two attributes, the id, an Integer
   # corresponding to the row in our DB table, and name, the name of our user, as a String
   # 

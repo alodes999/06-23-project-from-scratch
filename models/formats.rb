@@ -6,7 +6,8 @@ class Format
   extend DatabaseClassMethods
   include DatabaseInstanceMethods
 
-  attr_accessor :id, :name
+  attr_reader :id
+  attr_accessor :name
   # This is our initialize method for my Format class(model).  We have two attributes, the id, an Integer
   # corresponding to the row in our DB table, and name, the name of our format, as a String
   # 

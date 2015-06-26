@@ -8,7 +8,7 @@ module DatabaseClassMethods
   # 
   # Returns an Array of Objects of the Class that sent the method.
   def all
-    table_name = self.to_s.tableize
+    table_name = get_table_name
     results = CONNECTION.execute("SELECT * FROM #{table_name};")
     array_list = []
 
@@ -24,7 +24,7 @@ module DatabaseClassMethods
   # 
   # Returns an Object synced with the matching row in the calling Class's table.
   def find(id)
-    table_name = self.to_s.tableize
+    table_name = get_table_name
     
     result = CONNECTION.execute("SELECT * FROM #{table_name} WHERE id = #{id};").first
     
@@ -44,7 +44,7 @@ module DatabaseClassMethods
   # Returns an Object of the Class type calling the method, and also adds the new row
   # to the table.
   def add(arguments={})
-    table_name = self.to_s.tableize
+    table_name = get_table_name
     columns_array = arguments.keys
     values_array = arguments.values  
     columns_for_sql = columns_array.join(", ")
@@ -70,8 +70,12 @@ module DatabaseClassMethods
   # 
   # Returns [], and deletes the row from the table
   def delete(id_to_delete)
-    table_name = self.to_s.tableize
+    table_name = get_table_name
     
     CONNECTION.execute("DELETE FROM #{table_name} WHERE id = #{id_to_delete};")
+  end
+  
+  def get_table_name
+    self.to_s.tableize
   end
 end

@@ -6,7 +6,8 @@ class Game
   extend DatabaseClassMethods
   include DatabaseInstanceMethods
 
-  attr_accessor :id, :name, :genres_id, :formats_id
+  attr_reader :id
+  attr_accessor :name, :genres_id, :formats_id
   # This is our initialize method for my Game class(model).  We have four attributes, the id, an Integer
   # corresponding to the row in our DB table, name, the name of our game, as a String, genres_id, an Integer
   # corresponding to the id of the associated genre from the genres table, and formats_id, an Integer
