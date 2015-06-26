@@ -18,7 +18,7 @@ get "/review_change" do
   erb :'/review/review_change'
 end
 
-get "review_change_input" do
+get "/review_change_input" do
   @change_review_pick = Review.find(params["review"]["id"])
   erb :'/review/review_change_action'
 end
