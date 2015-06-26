@@ -5,6 +5,7 @@ end
 # This listener pulls from the user main page, and sends the user to the user_read page.
 # This page lists all of the user's in the DB
 get "/users_read" do
+  @user = User.all
   erb :'/user/user_read'
 end
 # This listener pulls from the user main page, and sends the user to the user_add page.
@@ -15,17 +16,20 @@ end
 # This listener pulls from the user main page, and sends the user to the user_change page.
 # This page allows the user to change the name of a user unattached to a review.
 get "/users_change" do
+  @user = User.all
   erb :'/user/user_change'
 end
 # This listener pulls from the user main page, and sends the user to the user_delete page.
 # This page allows the user to delete a user unattached to a review
 get "/users_delete" do
+  @user = User.all
   erb :'/user/user_delete'
 end
 # This listener pulls from the user main page, and sends the user to the user_games page.
 # This page will request a certain user, and will direct the user to a page showing a list
 # of all the reviews for that user
 get '/users_reviews' do
+  @user = User.all
   erb :'/user/user_reviews'
 end
 # This listener pulls from the user_reviews.erb page.  It grabs the user[list_id] from
@@ -34,6 +38,7 @@ end
 # that have that users_id, storing that Array as @review_list.  The route handler sends
 # those to user_reviews_list to display the list of the appropriate Reviews of that User  
 get "/users_list_of_reviews" do
+  @game = Game.all
   @user = User.find(params["user"]["list_id"])
   @review_list = Review.reviews_for_user(params["user"]["list_id"])
   erb :"user/user_reviews_list"

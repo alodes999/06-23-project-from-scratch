@@ -6,7 +6,7 @@
 <!--This form lists each user currently in the database. It returns the id, named "user[list_id]"  
   Sends a call to the "/users_list_of_reviews receiver -->
   <select name="user[list_id]">
-    <% User.all.each do |user| %>
+    <% @user.each do |user| %>
       <option value="<%= user.id %>"><%= user.name %></option>
     <% end %>
   </select>

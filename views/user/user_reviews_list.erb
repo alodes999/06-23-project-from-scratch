@@ -23,7 +23,7 @@
 <p>Games List</p>
 
 <ul>
-  <% Game.all.each do |game| %>
+  <% @game.each do |game| %>
     <li><%= "#{game.id} - #{game.name}" %></li>
   <% end %>
 </ul>

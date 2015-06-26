@@ -8,7 +8,7 @@
   user name, called "user[new_name]".  Sends a call to the "/user_change_in_database"
   receiver -->
   <select name="user[change_id]">
-    <% User.all.each do |user| %>
+    <% @user.each do |user| %>
       <option value="<%= user.id %>"><%= user.name %></option>
     <% end %>
   </select>

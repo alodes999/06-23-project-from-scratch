@@ -8,7 +8,7 @@ Please ensure the user you wish to delete is not tied with a review!
   Sends a call to the "/user_delete_from_database" receiver -->
 <form action="/user_delete_from_database">
   <select name="user[delete_id]">
-    <% User.all.each do |user| %>
+    <% @user.each do |user| %>
       <option value="<%= user.id %>"><%= user.name %></option>
     <% end %>
   </select>
