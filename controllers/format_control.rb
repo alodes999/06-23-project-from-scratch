@@ -27,6 +27,12 @@ end
 get "/format_games" do
   erb :'format/format_games'
 end
+
+get "/format_list_of_games" do
+  @format = Format.find(params["format"]["list_id"])
+  @game_list = Format.games_in_format(params["format"]["list_id"])
+  erb :"format_games_of"
+end
 # This listener pulls from the format_add.erb page.  It grabs the format[name] from
 # the input form there and then checks to see if the name is already in the DB
 # 

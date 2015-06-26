@@ -1,0 +1,19 @@
+<h1>List of Games in Format <%= @format.name %></h1>
+
+<% if @game_list == [] %>
+
+  <p>There are no games of that Format currently in the Database!</p>
+
+<% else %>
+
+<table>
+  <tr>
+    <th> Game ID - </th>
+    <th> Game Name </th>
+  </tr>
+  <% Game.all.each do |game| %>
+    <tr><td align='center'><%= "#{game.id}" %></td><td align='center'><%= "#{game.name}" %></td></tr>
+  <% end %>
+</table>
+
+<% end %>

@@ -1,5 +1,20 @@
 <h1>Games in a Format</h1>
 
-<p>Will be a list to pick, and return a list of games in a format</p>
+<p>Pick the Format you'd like to list games in</p>
 
-<meta http-equiv="refresh" content="3, URL=/home">
+<form action="/format_list_of_games">
+<!--This form lists each format currently in the database, as well as allows for input
+  for the new format name.  It returns both the id, named "format[change_id]", and the new
+  format name, called "format[new_name]".  Sends a call to the "/format_change_in_database"
+  receiver -->
+  <select name="format[list_id]">
+    <% Format.all.each do |format| %>
+      <option value="<%= format.id %>"><%= format.name %></option>
+    <% end %>
+  </select>
+  
+  <button type="submit">List this Format</button>
+  
+</form>
+
+<p><a href="/home">Go to home page</a></p>
