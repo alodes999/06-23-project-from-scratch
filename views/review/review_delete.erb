@@ -1,6 +1,49 @@
+<h1>Delete Review</h1>
 
+<p>Please pick a review to delete</p>
+<!--This form lists each review currently in the database, and allows selection of one to delete.
+  It returns the id of the selected review, named "review[delete_id]". 
+  Sends a call to the "/review_delete_from_database" receiver -->
+<table>
+  <tr>
+    <th> Review ID - </th>
+    <th> User ID* - </th>
+    <th> Game ID** - </th>
+    <th> Review Score </th>
+  </tr>
+  <% Review.all.each do |review| %>
+    <tr><td align='center'><%= "#{review.id}" %></td><td align='center'><%= "#{review.users_id}" %></td><td align='center'><%= "#{review.games_id}" %></td><td align='center'><%= "#{review.score}" %></td></tr>
+  <% end %>
+</table>
+<p></p>
+<table>
+  <tr>
+    <th> User ID* </th>
+    <th> User Name </th>
+  </tr>
+  <% User.all.each do |user| %>
+    <tr><td align='center'><%= "#{user.id}" %></td><td align='center'><%= "#{user.name}" %></td></tr>
+  <% end %>
+</table>
+<p></p>
+<table>
+  <tr>
+    <th> Game ID** </th>
+    <th> Game Name </th>
+  </tr>
+  <% Game.all.each do |game| %>
+    <tr><td align='center'><%= "#{game.id}" %></td><td align='center'><%= "#{game.name}" %></td></tr>
+  <% end %>
 
-
-
+</table>
+<form action="/review_delete_from_database">
+  <select name="review[delete_id]">
+    <% Review.all.each do |review| %>
+      <option value="<%= review.id %>"><%= review.users_id%> - <%= review.games_id %> - <%= review.score %></option>
+    <% end %>
+  </select>
+  
+  <button type="input">I'm sure, delete review</button>
+</form>
 
 <p><a href="/home">Go to home page</a></p>
