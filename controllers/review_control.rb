@@ -3,24 +3,24 @@ get "/review" do
 end
 # This listener pulls from the review main page, and sends the user to the review_read page.
 # This page lists all of the review's in the DB
-get "/reviews_read" do
+get "/review_read" do
   erb :'/review/review_read'
 end
 # This listener pulls from the review main page, and sends the user to the review_add page.
 # This page allows the user to add a new review
-get "/reviews_add" do
+get "/review_add" do
   erb :'/review/review_add'
 end
 # This listener pulls from the review main page, and sends the review to the review_change page.
 # This page allows the user to pick which review to modify.  Once there, the user can pick to
 # change the game or user the review attached to, or the reviews score.  Once submitted,
 # it is sent to the reviews_change_to_database route.
-get "/reviews_change" do
+get "/review_change" do
   erb :'/review/review_change'
 end
 # This listener pulls from the review main page, and sends the user to the review_delete page.
 # This page allows the user to delete a review.
-get "/reviews_delete" do
+get "/review_delete" do
   erb :'/review/review_delete'
 end
 # This listener pulls from the review_add.erb page.  It grabs the params from
