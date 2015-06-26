@@ -1,7 +1,7 @@
 <h1>Genre List</h1>
 
 <ul>
-  <% Genre.all.each do |genre| %>
+  <% @genre.each do |genre| %>
     <li><%= "#{genre.id} - #{genre.name}" %></li>
   <% end %>
 </ul>

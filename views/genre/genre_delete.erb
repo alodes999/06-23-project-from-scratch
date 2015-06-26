@@ -8,7 +8,7 @@ Please ensure the genre you wish to delete is not tied with a game!
   Sends a call to the "/genre_delete_from_database" receiver -->
 <form action="/genre_delete_from_database">
   <select name="genre[delete_id]">
-    <% Genre.all.each do |genre| %>
+    <% @genre.each do |genre| %>
       <option value="<%= genre.id %>"><%= genre.name %></option>
     <% end %>
   </select>

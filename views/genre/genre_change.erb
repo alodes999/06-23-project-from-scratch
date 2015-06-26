@@ -8,7 +8,7 @@
   genre name, called "genre[new_name]".  Sends a call to the "/genre_change_in_database"
   receiver -->
   <select name="genre[change_id]">
-    <% Genre.all.each do |genre| %>
+    <% @genre.each do |genre| %>
       <option value="<%= genre.id %>"><%= genre.name %></option>
     <% end %>
   </select>

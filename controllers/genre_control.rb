@@ -10,22 +10,26 @@ end
 # This listener pulls from the genre main page, and sends the user to the genre_change page.
 # This page allows the user to change the name of a genre unattached to a game.
 get '/genre_change' do
+  @genre = Genre.all
   erb :'genre/genre_change'
 end
 # This listener pulls from the genre main page, and sends the user to the genre_read page.
 # This page lists all of the genre's in the DB
 get '/genre_read' do
+  @genre = Genre.all
   erb :'genre/genre_read'
 end
 # This listener pulls from the genre main page, and sends the user to the genre_delete page.
 # This page allows the user to delete a genre unattached to a game
 get '/genre_delete' do
+  @genre = Genre.all
   erb :'genre/genre_delete'
 end
 # This listener pulls from the genre main page, and sends the user to the genre_games page.
 # This page will request a certain genre, and will direct the user to a page showing a list
 # of all the games in that genre
 get '/genre_games' do
+  @genre = Genre.all
   erb :'genre/genre_games'
 end
 # This listener pulls from the genre_games.erb page.  It grabs the genre[list_id] from
