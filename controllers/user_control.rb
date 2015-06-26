@@ -1,3 +1,4 @@
+# This listener pulls from the main page, and sends the user to the user_main page.
 get "/user" do
   erb :"/user/user_main"
 end
@@ -83,6 +84,6 @@ get "/user_delete_from_database" do
     User.delete(params["user"]["delete_id"])
     erb :"success/data_deleted"
   else
-    erb :"error/data_exists"
+    erb :"error/data_associated"
   end
 end

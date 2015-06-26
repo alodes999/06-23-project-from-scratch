@@ -1,25 +1,42 @@
+# This listener pulls from the main page, and sends the user to the game_main page.
 get "/game" do
   erb :"/game/game_main"
 end
-
+# This listener pulls from the game main page, and sends the user to the game_read page.
+# This page lists all of the game's in the DB
 get "/games_read" do
   erb :'game/game_read'
 end
-
+# This listener pulls from the game main page, and sends the user to the game_add page.
+# This page allows the user to add a new unique game name
 get "/games_add" do
   erb :'game/game_add'
 end
-
+# This listener pulls from the game main page, and sends the user to the game_change page.
+# This page allows the user to change the name of a game unattached to a game.
 get "/games_change" do
   erb :'game/game_change'
 end
-
+# This listener pulls from the game main page, and sends the user to the game_delete page.
+# This page allows the user to delete a game unattached to a game
 get "/games_delete" do
   erb :'game/game_delete'
 end
-
+# This listener pulls from the game main page, and sends the user to the game_reviews page.
+# This page will request a certain game, and will direct the user to a page showing a list
+# of all the reviews in that game
 get "/games_reviews" do
   erb :'game/game_reviews'
+end
+# This listener pulls from the game_reviews.erb page.  It grabs the game[list_id] from
+# the input form and grabs the row from the games table, storing that 
+# object as @game.  It also goes to the reviews table and pulls back a list of all reviews 
+# that have that games_id, storing that Array as @review_list.  The route handler sends
+# those to game_reviews_list to display the list of the appropriate Reviews of that Game  
+get "/games_list_of_reviews" do
+  @game = Game.find(params["game"]["list_id"])
+  @review_list = Game.reviews_for_game(params["game"]["list_id"])
+  erb :"game/game_reviews_list"
 end
 # This listener pulls from the game_add.erb page.  It grabs the game[name] from
 # the input form there and then checks to see if the name is already in the DB
@@ -92,6 +109,6 @@ get '/game_delete_from_database' do
     Game.delete(params["game"]["delete_id"])
     erb :"success/data_deleted"
   else
-    erb :"error/data_exists"
+    erb :"error/data_associated"
   end
 end

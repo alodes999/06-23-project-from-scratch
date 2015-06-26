@@ -1,5 +1,18 @@
 <h1>Reviews for a Game</h1>
 
-<p>Will be a list to pick, and return a list of reviews given for a game</p>
+<p>Pick the Game you'd like to list reviews for</p>
 
-<meta http-equiv="refresh" content="3, URL=/home">
+<form action="/games_list_of_reviews">
+<!--This form lists each game currently in the database. It returns the id, named "game[list_id]"  
+  Sends a call to the "/games_list_of_reviews receiver -->
+  <select name="game[list_id]">
+    <% Game.all.each do |game| %>
+      <option value="<%= game.id %>"><%= game.name %></option>
+    <% end %>
+  </select>
+  
+  <button type="submit">List this Game</button>
+  
+</form>
+
+<p><a href="/home">Go to home page</a></p>

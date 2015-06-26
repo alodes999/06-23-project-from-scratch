@@ -1,0 +1,30 @@
+<h1>List of <%= @game.name %>'s Reviews</h1>
+
+<% if @review_list == [] %>
+
+  <p>There are no reviews for that Game currently in the Database!</p>
+
+<% else %>
+
+<table>
+  <tr>
+    <th> Review ID - </th>
+    <th> Review Score - </th>
+    <th> User ID of Reviewer </th>
+  </tr>
+  <% @review_list.each do |review| %>
+    <tr><td align='center'><%= "#{review.id}" %></td><td align='center'><%= "#{review.score}" %></td><td align='center'><%= "#{review.users_id}" %></td></tr>
+  <% end %>
+</table>
+
+<% end %>
+
+<p>User List</p>
+
+<ul>
+  <% User.all.each do |user| %>
+    <li><%= "#{user.id} - #{user.name}" %></li>
+  <% end %>
+</ul>
+
+<p><a href="/home">Go to home page</a></p>
