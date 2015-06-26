@@ -1,7 +1,7 @@
 <h1>Format List</h1>
 
 <ul>
-  <% Format.all.each do |format| %>
+  <% @format.each do |format| %>
     <li><%= "#{format.id} - #{format.name}" %></li>
   <% end %>
 </ul>

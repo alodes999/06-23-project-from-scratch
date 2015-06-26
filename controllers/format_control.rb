@@ -4,6 +4,7 @@ end
 # This listener pulls from the format main page, and sends the user to the format_read page.
 # This page lists all of the format's in the DB
 get "/format_read" do
+  @format = Format.all
   erb :'format/format_read'
 end
 # This listener pulls from the format main page, and sends the user to the format_add page.
@@ -14,17 +15,20 @@ end
 # This listener pulls from the format main page, and sends the user to the format_change page.
 # This page allows the user to change the name of a format unattached to a game.
 get "/format_change" do
+  @format = Format.all
   erb :'format/format_change'
 end
 # This listener pulls from the format main page, and sends the user to the format_delete page.
 # This page allows the user to delete a format unattached to a game
 get "/format_delete" do
+  @format = Format.all
   erb :'format/format_delete'
 end
 # This listener pulls from the format main page, and sends the user to the format_games page.
 # This page will request a certain format, and will direct the user to a page showing a list
 # of all the games in that format
 get "/format_games" do
+  @format = Format.all
   erb :'format/format_games'
 end
 # This listener pulls from the format_games.erb page.  It grabs the format[list_id] from

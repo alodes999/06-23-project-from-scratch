@@ -8,7 +8,7 @@
   format name, called "format[new_name]".  Sends a call to the "/format_change_in_database"
   receiver -->
   <select name="format[change_id]">
-    <% Format.all.each do |format| %>
+    <% @format.each do |format| %>
       <option value="<%= format.id %>"><%= format.name %></option>
     <% end %>
   </select>
