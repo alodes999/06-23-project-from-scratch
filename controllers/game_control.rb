@@ -49,12 +49,18 @@ get '/game_add_to_database' do
     erb :"error/data_exists"
   end
 end
-
+# This listener pulls from the game_change.erb page.  It grabs the id of the Game
+# row we want to change from params["game"]["id"] and creates a Game Object.
+# It sends that game object to the game_change_action.erb page, where the changes are
+# made.
 get "/game_change_input" do
   @change_game_pick = Game.find(params["game"]["id"])
   erb :"game/game_change_action"
 end
-
+# This listener pulls from the game_change_action.erb page.  It pushes the params["game"]
+# hash the form returns into a variable, checks to see if the name was empty, and passes the
+# changed values into an instantiated Game Object to update the values.  The updated Object
+# has its' .save method called to send the values back to the Database row it belongs to.
 get "/game_change_in_database" do
   change_hash = params["game"]
   if change_hash["name"].empty?
