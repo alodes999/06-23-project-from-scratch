@@ -73,9 +73,6 @@ end
 # It then changes the name attribute for that Object, using the 
 # genre[new_name] param and saves the change back to the DB.
 # 
-# Once we add the games table, it will check to see if the genre has games attached.  If it
-# does not, the change goes through and the user is sent to the Success page.
-# 
 # If games are attached, it sends the user to the Error page.
 get '/genre_change_in_database' do
   if Genre.games_in_genre(params["genre"]["change_id"].to_i) == []
@@ -90,9 +87,6 @@ get '/genre_change_in_database' do
 end
 # This listener pulls from the genre_delete.erb page.  It grabs the param genre[delete_id], an ID
 # of the row we want to delete in the genres table.  It then deletes the row.
-# 
-# Once we add the games table, it will check to see if the genre has games attached.  If it
-# does not, the delete goes through and the user is sent to the Success page.
 # 
 # If games are attached, it sends the user to the Error page.
 get '/genre_delete_from_database' do

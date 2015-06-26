@@ -1,6 +1,28 @@
+<h1>Add Review</h1>
 
+  <p>Please fill out the form to add a review</p>
+<!--This form allows for input for a new review name.  It returns the new review score, called "review[score]", the
+  user id to tie with the review (review[users_id]), and the game id to tie with the review (review[games_id]).  
+  Sends a call to the "/review_add_to_database" receiver -->
+  <form action="/review_add_to_database">
+    <input type="number" placeholder="Review Score" name="review[score]">
+    
+    <select name="review[users_id]">
+      <% User.all.each do |user| %>
+        <option value="<%= user.id %>"><%= user.name %></option>
+      <% end %>
+    </select>
+    
+    <select name="review[games_id]">
+      <% Game.all.each do |game| %>
+        <option value="<%= game.id %>"><%= game.name %></option>
+      <% end %>
+    </select>
+    
+    
+    <button type="submit">Add review</button>
 
-
+  </form>
 
 
 <p><a href="/home">Go to home page</a></p>
