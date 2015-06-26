@@ -76,7 +76,7 @@ get "/game_change_input" do
   if Game.reviews_for_game(params["game"]["id"]) == []
     erb :"game/game_change_action"
   else
-    erb :"error/data_exists"
+    erb :"error/data_associated"
   end
 end
 # This listener pulls from the game_change_action.erb page.  It pushes the params["game"]

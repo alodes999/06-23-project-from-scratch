@@ -95,7 +95,7 @@ end
 # 
 # If games are attached, it sends the user to the Error page.
 get '/format_delete_from_database' do
-  if Format.games_in_format(params["format"]["change_id"]) == []
+  if Format.games_in_format(params["format"]["delete_id"]) == []
     Format.delete(params["format"]["delete_id"])
     erb :"success/data_deleted"
   else

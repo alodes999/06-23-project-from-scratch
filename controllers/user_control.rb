@@ -82,7 +82,7 @@ get "/user_change_in_database" do
     change_user.save
     erb :"success/data_changed"
   else
-    erb :"error/data_exists"
+    erb :"error/data_associated"
   end
 end
 # This listener pulls from the user_delete.erb page.  It grabs the param user[delete_id], an ID
