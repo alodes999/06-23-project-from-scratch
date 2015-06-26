@@ -90,7 +90,7 @@ end
 # 
 # If games are attached, it sends the user to the Error page.
 get '/genre_delete_from_database' do
-  if Genre.games_in_genre(params["genre"]["change_id"].to_i) == []
+  if Genre.games_in_genre(params["genre"]["delete_id"].to_i) == []
     Genre.delete(params["genre"]["delete_id"])
     erb :"success/data_deleted"
   else
