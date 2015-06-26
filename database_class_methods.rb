@@ -10,13 +10,7 @@ module DatabaseClassMethods
   def all
     table_name = get_table_name
     results = CONNECTION.execute("SELECT * FROM #{table_name};")
-    array_list = []
-
-    results.each do |hash|
-      array_list << self.new(hash)
-    end
-
-    array_list
+    array_list = make_object_array(results)
   end
   # Finds the row matching the id provided in the Class table that calls the method
   # 
@@ -78,4 +72,16 @@ module DatabaseClassMethods
   def get_table_name
     self.to_s.tableize
   end
+  
+  def make_object_array(hash)
+    object_array = []
+
+    hash.each do |object|
+      object_array << self.new(object)
+    end
+
+    object_array
+  end
+  
+  
 end

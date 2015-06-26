@@ -27,12 +27,7 @@ class Game
   # Returns an Array of Game class Objects that belong to the format looked up
   def self.games_in_format(id)
     gameslist = CONNECTION.execute("SELECT * FROM games WHERE formats_id = #{id};")
-    format_array = []
-    gameslist.each do |game|
-      format_array << Game.new(game)
-    end
-
-    format_array
+    format_array = make_object_array(gameslist)
   end
   # This class method allows us to list all of the games associated with the given Genre.
   # 
@@ -41,11 +36,6 @@ class Game
   # Returns an Array of Game class Objects that belong to the genre looked up
   def self.games_in_genre(id)
     gameslist = CONNECTION.execute("SELECT * FROM games WHERE genres_id = #{id};")
-    genre_array = []
-    gameslist.each do |game|
-      genre_array << Game.new(game)
-    end
-
-    genre_array
+    genre_array = make_object_array(gameslist)
   end
 end
