@@ -8,13 +8,13 @@
     <input type="number" placeholder="Review Score" name="review[score]">
     
     <select name="review[users_id]">
-      <% User.all.each do |user| %>
+      <% @user.each do |user| %>
         <option value="<%= user.id %>"><%= user.name %></option>
       <% end %>
     </select>
     
     <select name="review[games_id]">
-      <% Game.all.each do |game| %>
+      <% @game.each do |game| %>
         <option value="<%= game.id %>"><%= game.name %></option>
       <% end %>
     </select>

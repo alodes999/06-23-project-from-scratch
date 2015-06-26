@@ -4,17 +4,23 @@ end
 # This listener pulls from the review main page, and sends the user to the review_read page.
 # This page lists all of the review's in the DB
 get "/review_read" do
+  @review = Review.all
+  @user = User.all
+  @game = Game.all
   erb :'/review/review_read'
 end
 # This listener pulls from the review main page, and sends the user to the review_add page.
 # This page allows the user to add a new review
 get "/review_add" do
+  @user = User.all
+  @game = Game.all
   erb :'/review/review_add'
 end
 # This listener pulls from the review main page, and sends the review to the review_change page.
 # This page allows the user to pick which review to modify.  That sends the user back to the
 # "review_change_input" route.
 get "/review_change" do
+  @review = Review.all
   erb :'/review/review_change'
 end
 # This listener pulls from the review_change page.  It takes the id returned from there and
@@ -22,6 +28,8 @@ end
 # an Object called @change_review_pick, and passes that Object into the review_change_action
 # erb file for the changes.
 get "/review_change_input" do
+  @user = User.all
+  @game = Game.all
   @change_review_pick = Review.find(params["review"]["id"])
   erb :'/review/review_change_action'
 end
@@ -48,6 +56,9 @@ end
 # This listener pulls from the review main page, and sends the user to the review_delete page.
 # This page allows the user to delete a review.
 get "/review_delete" do
+  @review = Review.all
+  @user = User.all
+  @game = Game.all  
   erb :'/review/review_delete'
 end
 # This listener pulls from the review_add.erb page.  It grabs the params from

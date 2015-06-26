@@ -4,7 +4,7 @@
   Sends a call to the "/review_change_input" receiver -->
   <form action="/review_change_input">
     <select name="review[id]">
-      <% Review.all.each do |review| %>
+      <% @review.each do |review| %>
         <option value="<%= review.id %>">ID:<%= review.id %> - User:<%= review.users_id%> - Game:<%= review.games_id %> - Score:<%= review.score %></option>
       <% end %>
     </select>
