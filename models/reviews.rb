@@ -7,7 +7,7 @@ class Review
   include DatabaseInstanceMethods
   
   attr_reader :id
-  attr_accessor :review_score, :games_id, :users_id
+  attr_accessor :score, :games_id, :users_id
   # This is our initialize method for my Review class(model).  We have four attributes, the id, an Integer
   # corresponding to the row in our DB table, games_id, an Integer that corresponds with the associated row
   # in the games table, users_id, an Integer that corresponds with the associated row in the users table, and
@@ -18,6 +18,6 @@ class Review
     @id = options["id"]
     @games_id = options["games_id"]
     @users_id = options["users_id"]
-    @review_score = options["review_score"]
+    @score = options["score"]
   end
 end
