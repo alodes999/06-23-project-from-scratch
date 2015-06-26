@@ -60,9 +60,7 @@ module DatabaseClassMethods
   # 
   # Returns [], and deletes the row from the table
   def delete(id_to_delete)
-    table_name = get_table_name
-    
-    CONNECTION.execute("DELETE FROM #{table_name} WHERE id = #{id_to_delete};")
+    CONNECTION.execute("DELETE FROM #{get_table_name} WHERE id = #{id_to_delete};")
   end
   # Grabs the name of the class, and turns it into a tableized version to use for SQL
   # 
