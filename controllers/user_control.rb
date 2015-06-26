@@ -54,7 +54,7 @@ get "/user_add_to_database" do
     test_names << item.name
   end
   
-  if params["user"]["name"] == "" 
+  if params["user"]["name"].empty? 
     erb :"error/no_data_in_field"
   elsif test == []
     User.add(add_hash)
