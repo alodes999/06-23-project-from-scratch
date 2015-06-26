@@ -68,15 +68,15 @@ end
 # 
 # If games are attached, it sends the user to the Error page.
 get '/genre_change_in_database' do
-#  if Genre.games_in_genre(params["genre_to_change"]) == []
+  if Genre.games_in_genre(params["genre"]["change_id"].to_i) == []
     change_genre = Genre.find(params["genre"]["change_id"])
     change_genre.name = params["genre"]["new_name"]
     
     change_genre.save
     erb :"success/data_changed"
-#  else
-#    erb :"error/data_exists"
-#  end
+  else
+    erb :"error/data_associated"
+  end
 end
 # This listener pulls from the genre_delete.erb page.  It grabs the param genre[delete_id], an ID
 # of the row we want to delete in the genres table.  It then deletes the row.
@@ -86,10 +86,10 @@ end
 # 
 # If games are attached, it sends the user to the Error page.
 get '/genre_delete_from_database' do
-#  if Genre.games_in_genre(params["genre_to_delete"]) == []
+  if Genre.games_in_genre(params["genre"]["change_id"].to_i) == []
     Genre.delete(params["genre"]["delete_id"])
     erb :"success/data_deleted"
-#  else
-#    erb :"error/data_exists"
-#  end
+  else
+    erb :"error/data_associated"
+  end
 end

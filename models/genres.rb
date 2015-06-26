@@ -21,7 +21,7 @@ class Genre
   # 
   # Returns an Array of Game class Objects that belong to the genre looked up
   def self.games_in_genre(id)
-    gameslist = CONNECTION.execute("SELECT * FROM games WHERE genre_id = #{id};")
+    gameslist = CONNECTION.execute("SELECT * FROM games WHERE genres_id = #{id};")
     genre_array = []
     gameslist.each do |game|
       genre_array << Game.new(game)

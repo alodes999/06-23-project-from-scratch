@@ -67,15 +67,15 @@ end
 # 
 # If games are attached, it sends the user to the Error page.
 get '/format_change_in_database' do
-#  if Format.games_in_format(params["format_to_change"]) == []
+  if Format.games_in_format(params["format"]["change_id"]) == []
     change_format = Format.find(params["format"]["change_id"])
     change_format.name = params["format"]["new_name"]
     
     change_format.save
     erb :"success/data_changed"
-#  else
-#    erb :"error/data_exists"
-#  end
+  else
+    erb :"error/data_associated"
+  end
 end
 # This listener pulls from the format_delete.erb page.  It grabs the param format[delete_id], an ID
 # of the row we want to delete in the formats table.  It then deletes the row.
@@ -85,10 +85,10 @@ end
 # 
 # If games are attached, it sends the user to the Error page.
 get '/format_delete_from_database' do
-#  if Format.games_in_format(params["format_to_delete"]) == []
+  if Format.games_in_format(params["format"]["change_id"]) == []
     Format.delete(params["format"]["delete_id"])
     erb :"success/data_deleted"
-#  else
-#    erb :"error/data_exists"
-#  end
+  else
+    erb :"error/data_associated"
+  end
 end

@@ -79,10 +79,10 @@ end
 # 
 # If reviews are attached, it sends the user to the Error page.
 get '/game_delete_from_database' do
-#  if Game.reviews_for_game(params["game_to_delete"]) == []
+  if Game.reviews_for_game(params["game_to_delete"]) == []
     Game.delete(params["game"]["delete_id"])
     erb :"success/data_deleted"
-#  else
-#    erb :"error/data_exists"
-#  end
+  else
+    erb :"error/data_exists"
+  end
 end
