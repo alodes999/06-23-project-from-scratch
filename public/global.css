@@ -1,0 +1,57 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after{
+  box-sizing: inherit;
+}
+
+html {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+body {
+  text-align: center;
+  margin: 0px;
+}
+
+nav li {
+  background-color: rgb(6, 0, 229);
+  border: 3px solid red;
+}
+
+ul {
+  padding: 0px;
+  line-height: 50px;  
+}
+
+a:link {
+  display: block;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+a:visited {
+  display: block;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+a:hover {
+  display: block;
+  background-color: red;
+  text-decoration: none;
+}
+
+a:active {
+  display: block;
+  background-color: red;
+  text-decoration: none;
+}
+
+p {
+  background-color: rgb(6, 0, 229);
+  margin: 10px;
+  
+}
