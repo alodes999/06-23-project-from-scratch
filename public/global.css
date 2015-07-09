@@ -20,12 +20,25 @@ body {
 nav li {
   background-color: rgb(6, 0, 229);
   border: 3px solid red;
-  
+}
+
+header nav li {
+  width: 20%;
+  float: left;
+}
+
+.titlename {
+  display: none;
 }
 
 ul {
   padding: 0px;
   line-height: 50px;
+  list-style-type: none;
+}
+
+.currentpage {
+  background: red;
 }
 
 a:link {
@@ -57,9 +70,22 @@ a:active {
     float: left;
     width: 25%;
   }
+  .homenav {
+    width: 50%;
+  }
+  .titlename {
+    display: inline;
+    float: left;
+    width: 50%;
+    margin: 20px 0 0;
+    color: yellow;
+  }
   .about {
     float: right;
     width: 75%;
+  }
+  .main_nav {
+    height: 110px;
   }
 }
 
