@@ -8,6 +8,22 @@
   </head>
   
   <body>
+    <header>
+      <h1 class='titlename'>Game Review Repository</h1>
+      <div id='hamburger_menu'><img src='hamburgericon.png' alt='hamburger icon' class='menu'></div>
+      <div class='main_nav'>
+        <nav id='homenav' class='shrink_hamburger_menu'>
+          <ul>
+            <li><a href='/genre'>Genre</a></li>
+            <li><a href='/user'>User</a></li>
+            <li><a href='/game'>Game</a></li>
+            <li><a href='/review'>Review</a></li>
+            <li><a href='/format'>Format</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    
       <%= yield %>
   </body>
 </html>
