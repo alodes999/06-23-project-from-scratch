@@ -87,15 +87,18 @@ a:active {
 }
 
 @media (min-width: 700px) {
+  
   nav {
     float: left;
     width: 25%;
   }
+  
   #homenav {
     width: 50%;
     display: block;
     right: 0;
   }
+  
   .titlename {
     display: inline;
     float: left;
@@ -103,17 +106,21 @@ a:active {
     margin: 20px 0 0;
     color: yellow;
   }
+
   .about {
     float: right;
     width: 75%;
   }
+
   .main_nav {
     height: 110px;
   }
+
   header nav li {
     width: 20%;
     float: left;
   }
+
   #hamburger_menu {
     display: none;
   }
@@ -152,7 +159,3 @@ button {
   -webkit-transition: height 1s; /* Safari */
      transition: height 1s;
 }
-
-/*.nothing {
-  display: none;
-}*/
