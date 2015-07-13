@@ -30,13 +30,8 @@ function change_attached_class(element_name, class_to_add, class_to_remove) {
 function run_on_width () {
   if (this.innerWidth > 700) {
     document.getElementById("homenav").classList.remove("shrink_hamburger_menu");
-    // change_attached_class("image-to-stay", "show", "hide");
-    // change_attached_class("image-to-go", "hide", "show");
-    // document.getElementsByTagName("header")[0].style.height = "50px";
   } else {
     change_attached_class("homenav", "shrink_hamburger_menu", "grow_hamburger_menu");
-    // change_attached_class("image-to-stay", "hide", "show");
-    // document.getElementsByTagName("header")[0].style.height = "100px";
   }
 }
 
