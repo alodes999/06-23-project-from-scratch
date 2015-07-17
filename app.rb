@@ -8,6 +8,10 @@ require 'sinatra/reloader'
 require 'sqlite3'
 require_relative 'database_setup'
 
+configure :development do
+  ActiveRecord:Base.establish_connection(adapter: 'sqlite3', database: 'gamereviewrepos.db')
+end
+
 require_relative 'models/genres.rb'
 require_relative 'models/games.rb'
 require_relative 'models/users.rb'
