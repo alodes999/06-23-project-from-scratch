@@ -1,5 +1,5 @@
 
 
-get "/home" do
+get "/" do
   erb :'/home/home'
 end
