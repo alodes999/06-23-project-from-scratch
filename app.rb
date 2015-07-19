@@ -6,7 +6,6 @@ require 'sinatra'
 require 'sinatra/reloader'
 require "active_record"
 
-require ''
 require_relative 'database_setup'
 
 configure :development do
