@@ -10,7 +10,7 @@ require_relative 'database_setup'
 
 configure :development do
   require 'sqlite3'
-  ActiveRecord:Base.establish_connection(adapter: 'sqlite3', database: 'gamereviewrepos.db')
+  ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'gamereviewrepos.db')
 end
 
 configure :production do  
